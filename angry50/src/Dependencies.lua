@@ -21,6 +21,7 @@ require 'src/Util'
 
 require 'src/states/BaseState'
 require 'src/states/PlayState'
+require 'src/states/StartState'
 
 gTextures = {
     -- backgrounds
@@ -68,6 +69,13 @@ gSounds = {
     ['kill'] = love.audio.newSource('sounds/kill.wav'),
 
     ['music'] = love.audio.newSource('sounds/music.wav')
+}
+
+gFonts = {
+    ['small'] = love.graphics.newFont('fonts/font.ttf', 8),
+    ['medium'] = love.graphics.newFont('fonts/font.ttf', 16),
+    ['large'] = love.graphics.newFont('fonts/font.ttf', 32),
+    ['huge'] = love.graphics.newFont('fonts/font.ttf', 64)
 }
 
 -- tweak circular alien quad

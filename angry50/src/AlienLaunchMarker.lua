@@ -45,7 +45,7 @@ function AlienLaunchMarker:update(dt)
             self.aiming = true
 
         -- if we release the mouse, launch an Alien
-        elseif love.mouse.wasReleased(1) then
+        elseif love.mouse.wasReleased(1) and self.aiming then
             self.launched = true
 
             -- spawn new alien in the world, passing in user data of player

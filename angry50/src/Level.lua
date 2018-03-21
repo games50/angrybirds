@@ -191,6 +191,11 @@ function Level:update(dt)
         if xPos < 0 or (math.abs(xVel) + math.abs(yVel) < 1.5) then
             self.launchMarker.alien.body:destroy()
             self.launchMarker = AlienLaunchMarker(self.world)
+
+            -- re-initialize level if we have no more aliens
+            if #self.aliens == 0 then
+                gStateMachine:change('start')
+            end
         end
     end
 end
@@ -209,5 +214,22 @@ function Level:render()
 
     for k, obstacle in pairs(self.obstacles) do
         obstacle:render()
+    end
+
+    -- render instruction text if we haven't launched bird
+    if not self.launchMarker.launched then
+        love.graphics.setFont(gFonts['medium'])
+        love.graphics.setColor(0, 0, 0, 255)
+        love.graphics.printf('Click and drag circular alien to shoot!',
+            0, 64, VIRTUAL_WIDTH, 'center')
+        love.graphics.setColor(255, 255, 255, 255)
+    end
+
+    -- render victory text if all aliens are dead
+    if #self.aliens == 0 then
+        love.graphics.setFont(gFonts['huge'])
+        love.graphics.setColor(0, 0, 0, 255)
+        love.graphics.printf('VICTORY', 0, VIRTUAL_HEIGHT / 2 - 32, VIRTUAL_WIDTH, 'center')
+        love.graphics.setColor(255, 255, 255, 255)
     end
 end
