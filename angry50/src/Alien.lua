@@ -9,8 +9,6 @@
 Alien = Class{}
 
 function Alien:init(world, type, x, y, userData)
-    self.rotation = 0
-
     self.world = world
     self.type = type or 'square'
 

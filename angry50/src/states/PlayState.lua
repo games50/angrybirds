@@ -25,6 +25,7 @@ function PlayState:update(dt)
         if self.levelTranslateX > VIRTUAL_WIDTH then
             self.levelTranslateX = VIRTUAL_WIDTH
         else
+            
             -- only update background if we were able to scroll the level
             self.level.background:update(dt)
         end
@@ -34,6 +35,7 @@ function PlayState:update(dt)
         if self.levelTranslateX < -VIRTUAL_WIDTH then
             self.levelTranslateX = -VIRTUAL_WIDTH
         else
+            
             -- only update background if we were able to scroll the level
             self.level.background:update(dt)
         end
