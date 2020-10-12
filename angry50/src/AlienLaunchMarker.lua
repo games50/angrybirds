@@ -88,7 +88,7 @@ function AlienLaunchMarker:render()
             for i = 1, 90 do
                 
                 -- magenta color that starts off slightly transparent
-                love.graphics.setColor(255, 80, 255, (255 / 12) * i)
+                love.graphics.setColor(255/255, 80/255, 255/255, ((255 / 24) * i) / 255)
                 
                 -- trajectory X and Y for this iteration of the simulation
                 trajX = self.shiftedX + i * 1/60 * impulseX
@@ -101,7 +101,7 @@ function AlienLaunchMarker:render()
             end
         end
         
-        love.graphics.setColor(255, 255, 255, 255)
+        love.graphics.setColor(1, 1, 1, 1)
     else
         self.alien:render()
     end

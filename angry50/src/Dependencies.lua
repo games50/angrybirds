@@ -60,15 +60,15 @@ gFrames = {
 }
 
 gSounds = {
-    ['break1'] = love.audio.newSource('sounds/break1.wav'),
-    ['break2'] = love.audio.newSource('sounds/break2.wav'),
-    ['break3'] = love.audio.newSource('sounds/break3.mp3'),
-    ['break4'] = love.audio.newSource('sounds/break4.wav'),
-    ['break5'] = love.audio.newSource('sounds/break5.wav'),
-    ['bounce'] = love.audio.newSource('sounds/bounce.wav'),
-    ['kill'] = love.audio.newSource('sounds/kill.wav'),
+    ['break1'] = love.audio.newSource('sounds/break1.wav', 'static'),
+    ['break2'] = love.audio.newSource('sounds/break2.wav', 'static'),
+    ['break3'] = love.audio.newSource('sounds/break3.mp3', 'static'),
+    ['break4'] = love.audio.newSource('sounds/break4.wav', 'static'),
+    ['break5'] = love.audio.newSource('sounds/break5.wav', 'static'),
+    ['bounce'] = love.audio.newSource('sounds/bounce.wav', 'static'),
+    ['kill'] = love.audio.newSource('sounds/kill.wav', 'static'),
 
-    ['music'] = love.audio.newSource('sounds/music.wav')
+    ['music'] = love.audio.newSource('sounds/music.wav', 'static')
 }
 
 gFonts = {

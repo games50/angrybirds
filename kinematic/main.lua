@@ -101,16 +101,16 @@ function love.draw()
     
     -- draw a polygon shape by getting the world points for our body, using the box shape's
     -- definition as a reference
-    love.graphics.setColor(0, 255, 0, 255)
+    love.graphics.setColor(0, 1, 0, 1)
     love.graphics.polygon('fill', boxBody:getWorldPoints(boxShape:getPoints()))
 
     -- draw a line that represents our ground, calculated from ground body and edge shape
-    love.graphics.setColor(255, 0, 0, 255)
+    love.graphics.setColor(1, 0, 0, 1)
     love.graphics.setLineWidth(2)
     love.graphics.line(groundBody:getWorldPoints(edgeShape:getPoints()))
 
     -- draw all our kinematic bodies
-    love.graphics.setColor(0, 0, 255, 255)
+    love.graphics.setColor(0, 0, 1, 1)
 
     for i = 1, 3 do
         love.graphics.polygon('fill', kinematicBodies[i]:getWorldPoints(kinematicShape:getPoints()))
