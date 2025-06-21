@@ -1,5 +1,5 @@
 --[[
-    GD50
+    CS50 2D
     Angry Birds
 
     Author: Colton Ogden
@@ -38,11 +38,13 @@ function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     love.window.setTitle('kinematic')
 
-    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+    love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         vsync = true,
         resizable = true
     })
+
+    push.setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, { upscale = 'normal' })
 
     -- new Box2D "world" which will run all of our physics calculations
     world = love.physics.newWorld(0, 300)
@@ -81,7 +83,7 @@ function love.load()
 end
 
 function push.resize(w, h)
-    push:resize(w, h)
+    push.resize(w, h)
 end
 
 function love.keypressed(key)
@@ -97,7 +99,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    push:start()
+    push.start()
     
     -- draw a polygon shape by getting the world points for our body, using the box shape's
     -- definition as a reference
@@ -116,5 +118,5 @@ function love.draw()
         love.graphics.polygon('fill', kinematicBodies[i]:getWorldPoints(kinematicShape:getPoints()))
     end
 
-    push:finish()
+    push.finish()
 end

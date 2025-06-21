@@ -1,5 +1,5 @@
 --[[
-    GD50
+    CS50 2D
     Angry Birds
 
     Author: Colton Ogden
@@ -22,18 +22,20 @@
     https://opengameart.org/content/physics-assets
 ]]
 
-require 'src/Dependencies'
+love.graphics.setDefaultFilter('nearest', 'nearest')
+require 'src.Dependencies'
 
 function love.load()
     math.randomseed(os.time())
-    love.graphics.setDefaultFilter('nearest', 'nearest')
     love.window.setTitle('Angry 50')
 
-    push:setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, WINDOW_WIDTH, WINDOW_HEIGHT, {
+    love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
         vsync = true,
         resizable = true
     })
+
+    push.setupScreen(VIRTUAL_WIDTH, VIRTUAL_HEIGHT, { upscale = 'normal' })
 
     gStateMachine = StateMachine {
         ['start'] = function() return StartState() end,
@@ -52,7 +54,7 @@ function love.load()
 end
 
 function push.resize(w, h)
-    push:resize(w, h)
+    push.resize(w, h)
 end
 
 function love.keypressed(key)
@@ -94,7 +96,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    push:start()
+    push.start()
     gStateMachine:render()
-    push:finish()
+    push.finish()
 end

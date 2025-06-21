@@ -1,5 +1,5 @@
 --[[
-    GD50
+    CS50 2D
     Angry Birds
 
     Author: Colton Ogden
