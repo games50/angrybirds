@@ -33,6 +33,12 @@ RADIANS_TO_DEGREES = 57.295779513082320876
 
 push = require 'push'
 
+-- deprecation bypass for LÖVE 12+
+local major, minor = love.getVersion()
+if major > 11 then
+    love.setDeprecationOutput(false)
+end
+
 function love.load()
     math.randomseed(os.time())
     love.graphics.setDefaultFilter('nearest', 'nearest')

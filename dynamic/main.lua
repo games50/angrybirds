@@ -30,6 +30,12 @@ WINDOW_HEIGHT = 720
 
 push = require 'push'
 
+-- deprecation bypass for LÖVE 12+
+local major, minor = love.getVersion()
+if major > 11 then
+    love.setDeprecationOutput(false)
+end
+
 function love.load()
     love.graphics.setDefaultFilter('nearest', 'nearest')
     math.randomseed(os.time())

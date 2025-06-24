@@ -35,7 +35,7 @@ function AlienLaunchMarker:update(dt)
     if not self.launched then
 
         -- grab mouse coordinates
-        local x, y = push:toGame(love.mouse.getPosition())
+        local x, y = push.toGame(love.mouse.getPosition())
         
         -- if we click the mouse and haven't launched, show arrow preview
         if love.mouse.wasPressed(1) and not self.launched then

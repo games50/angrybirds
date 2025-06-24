@@ -33,10 +33,16 @@ RADIANS_TO_DEGREES = 57.295779513082320876
 
 push = require 'push'
 
+-- deprecation bypass for LÖVE 12+
+local major, minor = love.getVersion()
+if major > 11 then
+    love.setDeprecationOutput(false)
+end
+
 function love.load()
     math.randomseed(os.time())
     love.graphics.setDefaultFilter('nearest', 'nearest')
-    love.window.setTitle('kinematic')
+    love.window.setTitle('ballpit')
 
     love.window.setMode(WINDOW_WIDTH, WINDOW_HEIGHT, {
         fullscreen = false,
@@ -66,6 +72,8 @@ function love.load()
     -- body to fall into the pit
     personBody = love.physics.newBody(world, math.random(VIRTUAL_WIDTH), 0, 'dynamic')
     personShape = love.physics.newRectangleShape(30, 30)
+
+    -- person fixture has a higher density than balls (20) vs 1
     personFixture = love.physics.newFixture(personBody, personShape, 20)
 
     -- table holding dynamic bodies (balls)

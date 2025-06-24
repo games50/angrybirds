@@ -25,6 +25,12 @@
 love.graphics.setDefaultFilter('nearest', 'nearest')
 require 'src.Dependencies'
 
+-- deprecation bypass for LÖVE 12+
+local major, minor = love.getVersion()
+if major > 11 then
+    love.setDeprecationOutput(false)
+end
+
 function love.load()
     math.randomseed(os.time())
     love.window.setTitle('Angry 50')

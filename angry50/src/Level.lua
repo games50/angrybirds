@@ -11,7 +11,7 @@ Level = Class{}
 function Level:init()
     
     -- create a new "world" (where physics take place), with no x gravity
-    -- and 30 units of Y gravity (for downward force)
+    -- and 300 units of Y gravity (for downward force)
     self.world = love.physics.newWorld(0, 300)
 
     -- bodies we will destroy after the world update cycle; destroying these in the
@@ -131,13 +131,21 @@ function Level:init()
     self.background = Background()
 end
 
+local FIXED_DT = 1 / 60
+local accumulator = 0
+
 function Level:update(dt)
-    
+    accumulator = accumulator + dt
+
     -- update launch marker, which shows trajectory
     self.launchMarker:update(dt)
 
     -- Box2D world update code; resolves collisions and processes callbacks
-    self.world:update(dt)
+    -- ensure a fixed timestep of 1/60th of a second
+    while accumulator >= FIXED_DT do
+        self.world:update(FIXED_DT)
+        accumulator = accumulator - FIXED_DT
+    end
 
     -- destroy all bodies we calculated to destroy during the update call
     for k, body in pairs(self.destroyedBodies) do
