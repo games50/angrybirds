@@ -183,8 +183,8 @@ function Level:update(dt)
         local xPos, yPos = self.launchMarker.alien.body:getPosition()
         local xVel, yVel = self.launchMarker.alien.body:getLinearVelocity()
         
-        -- if we fired our alien to the left or it's almost done rolling, respawn
-        if xPos < 0 or (math.abs(xVel) + math.abs(yVel) < 1.5) then
+        -- if we fired our alien to the left or it's far enough to the right or almost done rolling, respawn
+        if xPos < 0 or xPos > VIRTUAL_WIDTH + 200 or (math.abs(xVel) + math.abs(yVel) < 1.5) then
             self.launchMarker.alien.body:destroy()
             self.launchMarker = AlienLaunchMarker(self.world)
 
